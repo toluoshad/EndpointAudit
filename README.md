@@ -43,7 +43,7 @@ This tool gives IT support staff a fast, repeatable way to verify a machine is s
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/YOUR_USERNAME/EndpointAudit.git
+git clone https://github.com/toluoshad/EndpointAudit.git
 cd EndpointAudit
 
 # 2. Run the audit
