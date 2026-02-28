@@ -1,0 +1,84 @@
+============================================================
+  ENDPOINTAUDIT — WORKSTATION COMPLIANCE REPORT
+============================================================
+  Generated : 2026-02-28 15:16:55
+  Tool      : EndpointAudit v1.0.0
+  Purpose   : Security & compliance check for regulated environments
+
+============================================================
+  1. SYSTEM INFORMATION
+============================================================
+  Hostname:                      Tolus-MacBook-Pro.local
+  Operating System:              macOS 15.3.2
+  Kernel Version:                24.3.0
+  System Uptime:                 14 days
+
+  CPU:                           Intel(R) Core(TM) i5-8259U CPU @ 2.30GHz
+  CPU Cores:                     8
+  RAM:                           8.0 GB
+
+  Disk Total:                    233Gi
+  Disk Used:                     10Gi (83%)
+  Disk Available:                2.3Gi
+
+============================================================
+  2. FIREWALL
+============================================================
+  Status:                        UNKNOWN — run with sudo for full access  [ FAIL ]
+  Stealth Mode:                  DISABLED
+
+  ⚠ RECOMMENDATION: Enable the macOS Application Firewall.
+    System Preferences > Security & Privacy > Firewall
+
+============================================================
+  3. DISK ENCRYPTION (FileVault)
+============================================================
+  FileVault Status:              ENABLED  [ PASS ]
+
+============================================================
+  4. SCREEN LOCK POLICY
+============================================================
+  Password on Wake:              NO  [ FAIL ]
+  Password Delay:                Unknown
+  Screen Saver Timeout:          10.0 minutes
+
+  ⚠ RECOMMENDATION: Set screen saver timeout to ≤10 minutes
+    and require password immediately on wake.
+
+============================================================
+  5. USER & ADMIN RIGHTS AUDIT
+============================================================
+  Total Local Users:             2
+  Admin Accounts:                2  [ FAIL ]
+
+  User List:
+    - Janet                [ADMIN]
+    - tolu                 [ADMIN]
+
+  ⚠ RECOMMENDATION: Limit admin accounts to IT-managed accounts only.
+    Standard users should not have admin rights on regulated machines.
+
+============================================================
+  6. SOFTWARE UPDATE STATUS
+============================================================
+  Status:                        UNABLE TO CHECK — ensure network access  [ FAIL ]
+
+  ⚠ RECOMMENDATION: Apply all pending updates promptly.
+    Unpatched systems are a primary vector for security breaches.
+
+============================================================
+  COMPLIANCE SUMMARY
+============================================================
+
+  [ FAIL ]  Firewall
+  [ PASS ]  Disk Encryption (FileVault)
+  [ FAIL ]  Screen Lock Policy
+  [ FAIL ]  User & Admin Rights
+  [ FAIL ]  OS Update Status
+
+  Overall: 1/5 checks passed
+  Status : NON-COMPLIANT — Remediation required. See details above.
+
+============================================================
+  END OF REPORT
+============================================================

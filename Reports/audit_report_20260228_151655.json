@@ -1,0 +1,52 @@
+{
+  "system": {
+    "hostname": "Tolus-MacBook-Pro.local",
+    "os_version": "macOS 15.3.2",
+    "kernel": "24.3.0",
+    "uptime": "14 days",
+    "cpu": "Intel(R) Core(TM) i5-8259U CPU @ 2.30GHz",
+    "cpu_cores": "8",
+    "ram": "8.0 GB",
+    "disk_total": "233Gi",
+    "disk_used": "10Gi",
+    "disk_available": "2.3Gi",
+    "disk_used_pct": "83%"
+  },
+  "firewall": {
+    "firewall_status": "UNKNOWN \u2014 run with sudo for full access",
+    "stealth_mode": "DISABLED",
+    "compliant": false
+  },
+  "encryption": {
+    "filevault_status": "ENABLED",
+    "compliant": true
+  },
+  "screen_lock": {
+    "password_required_on_wake": "NO",
+    "password_delay": "Unknown",
+    "screen_saver_timeout": "10.0 minutes",
+    "compliant": false
+  },
+  "users": {
+    "users": [
+      {
+        "username": "Janet",
+        "is_admin": true
+      },
+      {
+        "username": "tolu",
+        "is_admin": true
+      }
+    ],
+    "total_users": 2,
+    "admin_count": 2,
+    "compliant": false
+  },
+  "updates": {
+    "update_status": "UNABLE TO CHECK \u2014 ensure network access",
+    "pending_updates": [
+      "None found"
+    ],
+    "compliant": false
+  }
+}

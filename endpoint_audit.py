@@ -90,24 +90,39 @@ def check_firewall():
     """Checks if the macOS Application Firewall is enabled."""
     print("[2/6] Checking firewall status...")
 
+    #Just noticed macOs 15 moved firewall management to socketfilterfw
+    #This previous command works through macOS 13-15
+
     raw = run_cmd(
-        "defaults read /Library/Preferences/com.apple.alf globalstate 2>/dev/null"
+        "/usr/libexec/ApplicationFirewall/socketfilterfw --getglobalstate 2>/dev/null"
     )
 
-    if raw == "1" or raw == "2":
+    if "enabled" in raw.lower():
         status = "ENABLED"
         compliant = True
-    elif raw == "0":
+    elif "disabled" in raw.lower():
         status = "DISABLED"
         compliant = False
     else:
-        status = f"UNKNOWN (raw value: {raw})"
-        compliant = False
+        #In this case fall back to the old method for older macOs versions
+        old_raw = run_cmd(
+            "defaults read /Library/Preferences/com.apple.alf globalstate 2>/dev/null"
+)
+        if old_raw == "1" or old_raw == "2":
+            status = "ENABLED"
+            compliant = True
+        elif old_raw == "0":
+            status = "DISABLED"
+            compliant = False
+        else:
+            status = "UNKNOWN — run with sudo for full access"
+            compliant = False
 
-    stealth = run_cmd(
-        "defaults read /Library/Preferences/com.apple.alf stealthenabled 2>/dev/null"
+    #check if stealth mode is using the same modern command
+    stealth_raw = run_cmd(
+        "/usr/libexec/ApplicationFirewall/socketfilterfw --getstealthmode 2>/dev/null"
     )
-    stealth_status = "ENABLED" if stealth == "1" else "DISABLED"
+    stealth_status = "ENABLED" if "enabled" in stealth_raw.lower() else "DISABLED"
 
     return {
         "firewall_status": status,
@@ -443,6 +458,12 @@ def main():
     if platform.system() != "Darwin":
         print("\n  ⚠ Warning: This tool is designed for macOS.")
         print("  Some checks may not work correctly on other systems.\n")
+
+    if os.geteuid() != 0:
+        print("\n  ⚠ Note: Running without admin privileges.")
+        print("  For full results including firewall status, run with:")
+        print("  sudo python3 endpoint_audit.py\n")
+        input("  Press Enter to continue anyway, or Ctrl+C to exit...")
 
     results = {
         "system": get_system_info(),
