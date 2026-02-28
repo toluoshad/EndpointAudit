@@ -2,7 +2,7 @@
 """
 EndpointAudit - Workstation Security & Compliance Checker
 Designed for regulated environments such as finance and law firms.
-Author: [Your Name]
+Author: [Tolulope Oshadiya]
 Version: 1.0.0
 """
 
