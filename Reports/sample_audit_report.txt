@@ -1,0 +1,86 @@
+============================================================
+  ENDPOINTAUDIT — WORKSTATION COMPLIANCE REPORT
+============================================================
+  Generated : 2025-06-01 09:42:11
+  Tool      : EndpointAudit v1.0.0
+  Purpose   : Security & compliance check for regulated environments
+
+============================================================
+  1. SYSTEM INFORMATION
+============================================================
+  Hostname:                      MACBOOK-JSMITH
+  Operating System:              macOS 14.4.1
+  Kernel Version:                23.4.0
+  System Uptime:                 2 days, 3 hrs
+
+  CPU:                           Apple M2 Pro
+  CPU Cores:                     10
+  RAM:                           16.0 GB
+
+  Disk Total:                    460G
+  Disk Used:                     182G (40%)
+  Disk Available:                278G
+
+============================================================
+  2. FIREWALL
+============================================================
+  Status:                        ENABLED  [ PASS ]
+  Stealth Mode:                  ENABLED
+
+============================================================
+  3. DISK ENCRYPTION (FileVault)
+============================================================
+  FileVault Status:              DISABLED  [ FAIL ]
+
+  ⚠ RECOMMENDATION: Enable FileVault to encrypt the disk.
+    System Preferences > Security & Privacy > FileVault
+
+============================================================
+  4. SCREEN LOCK POLICY
+============================================================
+  Password on Wake:              YES  [ PASS ]
+  Password Delay:                0 seconds
+  Screen Saver Timeout:          5.0 minutes
+
+============================================================
+  5. USER & ADMIN RIGHTS AUDIT
+============================================================
+  Total Local Users:             3
+  Admin Accounts:                2  [ FAIL ]
+
+  User List:
+    - jsmith                [ADMIN]
+    - itadmin               [ADMIN]
+    - contractor_temp       [standard]
+
+  ⚠ RECOMMENDATION: Limit admin accounts to IT-managed accounts only.
+    Standard users should not have admin rights on regulated machines.
+
+============================================================
+  6. SOFTWARE UPDATE STATUS
+============================================================
+  Status:                        UPDATES AVAILABLE  [ FAIL ]
+
+  Pending Updates:
+    - macOS Sonoma 14.5
+    - Safari 17.4.1
+
+  ⚠ RECOMMENDATION: Apply all pending updates promptly.
+    Unpatched systems are a primary vector for security breaches.
+
+============================================================
+  COMPLIANCE SUMMARY
+============================================================
+
+  [ PASS ]  Firewall
+  [ FAIL ]  Disk Encryption (FileVault)
+  [ PASS ]  Screen Lock Policy
+  [ FAIL ]  User & Admin Rights
+  [ FAIL ]  OS Update Status
+
+  Overall: 2/5 checks passed
+  Status : NON-COMPLIANT — Remediation required. See details above.
+
+============================================================
+  END OF REPORT
+============================================================
